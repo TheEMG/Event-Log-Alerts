@@ -12,28 +12,28 @@ from googleapiclient.discovery import build
 # Set the SCOPES for Gmail API access
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
+# Replace 'credentials.json' with the full path to the file
+CREDENTIALS_PATH = "your_path"
+TOKEN_PATH = "your_path"
+
 def authenticate_gmail():
     creds = None
-    token_path = 'token.json'
-
-    # Load credentials from the token.json file if exists
-    if os.path.exists(token_path):
-        with open(token_path, 'r') as token:
+    if os.path.exists(TOKEN_PATH):
+        with open(TOKEN_PATH, 'r') as token:
             creds = Credentials.from_authorized_user_info(json.load(token), SCOPES)
 
-    # If no credentials or they're invalid, go through the OAuth2 flow
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_PATH, SCOPES)
             creds = flow.run_local_server(port=0)
 
-        # Save the credentials for future runs
-        with open(token_path, 'w') as token:
+        with open(TOKEN_PATH, 'w') as token:
             token.write(creds.to_json())
 
     return creds
+
 
 
 # Function to send an email using Gmail API
