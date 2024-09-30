@@ -49,6 +49,7 @@ To automate this process and ensure that the script runs at specified intervals 
 2. Set **Action** to "Start a Program".
 3. In the **Program/script** field, enter the path to your Python executable (e.g., `C:\Python39\python.exe`).
 4. In the **Add arguments** field, enter the path to your script (e.g., `C:\path\to\logEvent.py`).
+5. In the **Start in (optional)** field, enter the directory where your script and other necessary files (like `credentials.json` and `token.json`) are located (e.g., `C:\path\to\script\folder`).
 
 #### Set Conditions (Optional):
 
