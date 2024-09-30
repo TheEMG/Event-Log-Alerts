@@ -1,0 +1,20 @@
+# Ignore virtual environment folder
+venv/
+
+# Ignore credentials and token files
+credentials.json
+token.json
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore log files
+*.log
+
+# Ignore VS Code workspace settings (optional)
+.vscode/
+
+# Ignore OS specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
